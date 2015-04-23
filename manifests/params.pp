@@ -138,4 +138,20 @@ class yumrepos::params {
   $logstash14_gpgcheck = '1'
   $logstash14_includepkgs = absent
   $logstash14_exclude = absent
+
+  # Nginx Settings.
+  $os_short_name = $::operatingsystem ? {
+    'CentOS' => 'centos',
+    'RedHat' => 'rhel',
+    default  => undef
+  }
+  if $os_short_name == undef {
+    fail('Unsupported O/S')
+  }
+  $nginx_url = "http://nginx.org/packages/${os_short_name}/${::operatingsystemmajrelease}/${::architecture}"
+  $nginx_enabled = '1'
+  $nginx_gpgcheck = '1'
+  $nginx_includepkgs = absent
+  $nginx_exclude = absent
+
 }
