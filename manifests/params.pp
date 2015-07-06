@@ -161,4 +161,10 @@ class yumrepos::params {
   $nginx_includepkgs = absent
   $nginx_exclude = absent
 
+  # Passenger Settings.
+  $passenger_url = "https://oss-binaries.phusionpassenger.com/yum/passenger/el/${::operatingsystemmajrelease}/${::architecture}"
+  $passenger_enabled = '1'
+  $passenger_gpgcheck = '1'
+  $passenger_includepkgs = absent
+  $passenger_exclude = absent
 }
